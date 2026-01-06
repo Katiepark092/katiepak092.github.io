@@ -1,11 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>Katie's first site</title>
+  <meta charset="UTF-8">
+  <title>사랑을 나누는 꼬꼬닭 요양원 🐔💖</title>
+
+  <!-- 구글 폰트: 귀엽고 동글동글한 느낌 -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+      background: linear-gradient(45deg, #ffeaa7, #fab1a0, #81ecec, #74b9ff);
+      background-size: 400% 400%;
+      animation: movingBG 25s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    @keyframes movingBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* 헤더 글씨: 무지개 색상, 큰 글씨, 임팩트 */
+    h1 {
+      font-size: 3.5em;
+      text-align: center;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 5s linear infinite;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    @keyframes rainbowText {
+      0% {background-position:0%;}
+      100% {background-position:100%;}
+    }
+
+    /* 닭 캐릭터 이미지 */
+    .chicken {
+      position: absolute;
+      width: 100px;
+      animation: floatChicken 4s ease-in-out infinite;
+    }
+
+    @keyframes floatChicken {
+      0% {transform: translateY(0);}
+      50% {transform: translateY(-15px);}
+      100% {transform: translateY(0);}
+    }
+
+    /* 큰 요양원 이미지 */
+    .main-image {
+      display: block;
+      max-width: 90%;
+      margin: 2em auto;
+      border-radius: 15px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    }
+
+    /* 긴 글 */
+    .story {
+      max-width: 700px;
+      margin: 2em auto;
+      padding: 1em;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      text-align: center;
+    }
+
+    /* 버튼 */
+    .showMoreBtn {
+      display: block;
+      margin: 2em auto;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background-color: #ff7675;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .showMoreBtn:hover {
+      transform: scale(1.1) rotate(-3deg);
+      background-color: #fd79a8;
+    }
+
+    /* 스크롤 애니메이션 영역 */
+    #extraContent {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    #extraContent.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
 </head>
+
 <body>
-  <h1>Hellooo I'm Katieee :)</h1>
-  <p>WELCOM to my site! It's still early stages, so there's not much yet haha. <br>Visitos, please leave just one comment! >:3 </p>
+
+  <!-- 헤더 -->
+  <h1>안녕하세요! 여기는 사랑을 나누는<br>않쉉시 손큰 김꼬꼬닭 요양원입니다~ 🐔💖</h1>
+
+  <!-- 떠다니는 닭 캐릭터 -->
+  <img src="https://i.imgur.com/3G3fXq2.png" class="chicken" style="top:20%; left:5%;">
+  <img src="https://i.imgur.com/3G3fXq2.png" class="chicken" style="top:60%; left:80%;">
+
+  <!-- 메인 요양원 이미지 (입원 닭 + 요양보호사) -->
+  <img src="https://i.imgur.com/J6J3l4y.png" alt="요양원 닭과 보호사" class="main-image">
+
+  <!-- 긴 글 -->
+  <div class="story">
+    올해 입원하신 김꼬꼵 어르신(78세)은, 저희 사랑을 나누는 꼬꼬닭 요양원을 오고나서 무척 행복해지셨습니다. 
+    저희 요양원의 원장이시자 사회복지사이신 김꼬꼬닭님께서 무료 삼계탕을 제공한다고 하니 얼른 오세요!^^
+    <img src="https://imgur.com/gallery/chicken-humor-DtHD9Dc#BlQUDNw">
+  </div>
+
+  <!-- 더 보기 버튼 -->
+  <button class="showMoreBtn" id="showBtn">더보기 🐤</button>
+
+  <!-- 숨겨진 추가 콘텐츠 -->
+  <div id="extraContent" class="story">
+    <br>
+    <br>
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" 
+     alt="귀여운 닭 GIF" 
+     style="width:200px; display:block; margin: 1em auto;">
+    <img src="https://share.google/vkq0XGAnmI1hHwkvq">
+  </div>
+
+  <script>
+    // 버튼 클릭 시 숨겨진 콘텐츠 보여주기
+    const showBtn = document.getElementById('showBtn');
+    const extraContent = document.getElementById('extraContent');
+
+    showBtn.addEventListener('click', () => {
+      extraContent.classList.toggle('show');
+      showBtn.textContent = extraContent.classList.contains('show') ? "접기 🐥" : "더보기 🐤";
+    });
+  </script>
+
 </body>
 </html>
-Add initial index.html with greeting
